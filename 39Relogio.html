@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Javascritp</title>
+        <meta charset="utf-8">
+        <script src=" "></script> <!--Para vincular o arquivo js externo -->
+
+        <style>
+
+            body{
+                background: rgb(78, 67, 67);
+            }
+
+            h1{
+                text-align: center;
+                font: 15px;
+            }
+
+            .relogio{
+                text-align: center;
+                font-size: 150px;
+                top: 50px;
+                padding: 150px;
+                color: white;
+            }
+        </style>
+       
+
+</head>
+<body>
+    <h1>Relógio</h1>
+
+    <div class="relogio"></div>
+
+    <script>
+
+       (function(){
+
+          var $relogio = document.querySelector('.relogio');
+
+          function getHour(){
+            var data = new Date();
+            var h = formata(data.getHours());
+            var m = formata(data.getMinutes());
+            var s = formata(data.getSeconds());
+
+            return h + ":" + m + ":" + s;
+          }
+
+          function formata(t){
+            return t < 10 ? "0" + t : t;
+          }
+
+          function mostraRelogio(atual){
+            $relogio.textContent = atual;
+          }
+
+          mostraRelogio(getHour());
+
+          setInterval(function(){
+            mostraRelogio(getHour());
+          }, 1000)
+
+       }())
+
+        // (function(){}()) função auto invocavel
+        </script>
+
+</body>
+</html>
